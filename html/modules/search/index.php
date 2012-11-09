@@ -164,7 +164,10 @@ case "results":
 	$module_handler =& xoops_gethandler('module');
 	$criteria = new CriteriaCompo(new Criteria('hassearch', 1));
 	$criteria->add(new Criteria('isactive', 1));
-	$criteria->add(new Criteria('mid', "(".implode(',', $available_modules).")", 'IN'));
+	if (! defined('LEGACY_BASE_VERSION') || version_compare(LEGACY_BASE_VERSION, '2.2.0.0', '<')) {
+		$available_modules = '('.implode(',', $available_modules).')';
+	}
+	$criteria->add(new Criteria('mid', $available_modules, 'IN'));
 	$db =& Database::getInstance();
 	$result = $db->query("SELECT mid FROM ".$db->prefix("search")." WHERE notshow!=0");
     	while (list($badmid) = $db->fetchRow($result)) {
