@@ -56,8 +56,8 @@ $mids = array();
 if( is_array($mids_p) ) { foreach($mids_p as $e){  $mids[] = intval($e); } }
 
 //by domifara add rawurldecode for firefox
-if(function_exists('mb_detect_encoding') && function_exists('mb_convert_encoding')){
-	$from_encode = mb_detect_encoding($query);
+if(! defined('HYP_GET_ENCODING') && function_exists('mb_detect_encoding') && function_exists('mb_convert_encoding')){
+	$from_encode = mb_detect_encoding($query, 'auto');
 	if ($from_encode && $from_encode !== _CHARSET){
 		$query = mb_convert_encoding($query , _CHARSET , $from_encode);
 	}
