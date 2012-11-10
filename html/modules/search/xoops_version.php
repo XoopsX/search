@@ -29,7 +29,7 @@ if( ! defined( 'XOOPS_ROOT_PATH' ) ) exit ;
 $mydirname = basename( dirname( __FILE__ ) ) ;
 
 $modversion['name'] = _MI_SEARCH_NAME;
-$modversion['version'] = 2.05;
+$modversion['version'] = 2.06;
 $modversion['description'] = _MI_SEARCH_DESC;
 $modversion['author'] = "suin(<a href=\"http://suin.asia/\" target=\"_blank\">http://suin.asia/</a>)";
 $modversion['credits'] = "suin";
