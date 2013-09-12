@@ -33,7 +33,7 @@ $search_form = new XoopsThemeForm(_MD_SEARCH, "search", "index.php", 'get');
 $search_form->setExtra('accept-charset="utf-8"');
 
 // create form elements
-$search_form->addElement(new XoopsFormText(_MD_KEYWORDS, "query", 30, 255, htmlspecialchars($query, ENT_QUOTES)), true);
+$search_form->addElement(new XoopsFormText(_MD_KEYWORDS, "query", 30, 255, htmlspecialchars($query, ENT_QUOTES, _CHARSET)), true);
 $type_select = new XoopsFormSelect(_MD_TYPE, "andor", $andor);
 $type_select->addOptionArray(array("AND"=>_MD_ALL, "OR"=>_MD_ANY, "exact"=>_MD_EXACT));
 $search_form->addElement($type_select);

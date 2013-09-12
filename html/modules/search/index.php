@@ -190,20 +190,20 @@ case "results":
 	if ($andor != 'exact') {
 		foreach ($queries as $q) {
 			$keywords = array();
-			$keywords['key'] = htmlspecialchars(stripslashes($q));
+			$keywords['key'] = htmlspecialchars(stripslashes($q), ENT_QUOTES, _CHARSET);
 			$xoopsTpl->append('keywords', $keywords);
  		}
  		if (!empty($ignored_queries)) {
 			$xoopsTpl->assign('lang_ignoredwors', sprintf(_MD_IGNOREDWORDS, $xoopsConfigSearch['keyword_min']) );
 			foreach ($ignored_queries as $q) {
 				$badkeywords = array();
-				$badkeywords['key'] = htmlspecialchars(stripslashes($q));
+				$badkeywords['key'] = htmlspecialchars(stripslashes($q), ENT_QUOTES, _CHARSET);
 				$xoopsTpl->append('badkeywords', $badkeywords);
 			}
 		}
 	} else {
 		$keywords = array();
-		$keywords['key'] = '"'.htmlspecialchars(stripslashes($queries[0])).'"';
+		$keywords['key'] = '"'.htmlspecialchars(stripslashes($queries[0]), ENT_QUOTES, _CHARSET).'"';
 		$xoopsTpl->append('keywords', $keywords);
 	}
 	if(count($mb_suggest)>0 && $sug!=1){
@@ -218,7 +218,7 @@ case "results":
 		$xoopsTpl->assign('sug_url', $sug_url );
 		foreach ($mb_suggest as $k=>$m) {
 			$sug_keys = array();
-			$sug_keys['key'] = htmlspecialchars($m);
+			$sug_keys['key'] = htmlspecialchars($m, ENT_QUOTES, _CHARSET);
 			$sug_keys['url'] = $sug_url."&query=".urlencode(stripslashes($mb_suggest_w[$k]));
 			$xoopsTpl->append('sug_keys', $sug_keys);
 		}
@@ -302,7 +302,7 @@ case "results":
 	if (defined('LEGACY_MODULE_VERSION') && version_compare(LEGACY_MODULE_VERSION, '2.2', '>=')) {
 		// For XCL >= 2.2
 		$xclRoot =& XCube_Root::getSingleton();
-		$xclRoot->mContext->setAttribute('legacy_pagetitle', Legacy_Utils::formatPagetitle($xoopsModule->getVar('name'), htmlspecialchars(join(' ', $queries)), $andor));
+		$xclRoot->mContext->setAttribute('legacy_pagetitle', Legacy_Utils::formatPagetitle($xoopsModule->getVar('name'), htmlspecialchars(join(' ', $queries), ENT_QUOTES, _CHARSET), $andor));
 	}
 
 	break;
@@ -360,12 +360,12 @@ case "showallbyuser":
 			if ($andor != 'exact') {
 				foreach ($queries as $q) {
 					$keywords = array();
-					$keywords['key'] = htmlspecialchars(stripslashes($q));
+					$keywords['key'] = htmlspecialchars(stripslashes($q), ENT_QUOTES, _CHARSET);
 					$xoopsTpl->append('keywords', $keywords);
 				}
  			} else {
 				$keywords = array();
-				$keywords['key'] = '"'.htmlspecialchars(stripslashes($queries[0])).'"';
+				$keywords['key'] = '"'.htmlspecialchars(stripslashes($queries[0]), ENT_QUOTES, _CHARSET).'"';
 				$xoopsTpl->append('keywords', $keywords);
 			}
 		}
@@ -397,13 +397,13 @@ case "showallbyuser":
 			$prev = $start - 20;
 			$navi .= "\n".'<td align="left">';
 			$search_url_prev = $search_url."&start=$prev";
-			$navi .= "\n".'<a href="'.htmlspecialchars($search_url_prev).'">'._MD_PREVIOUS.'</a></td>';
+			$navi .= "\n".'<a href="'.htmlspecialchars($search_url_prev, ENT_COMPAT, _CHARSET).'">'._MD_PREVIOUS.'</a></td>';
 		}
 		$navi .= "\n".'<td>&nbsp;&nbsp;</td>';
 		if (false != $has_next) {
 			$next = $start + 20;
 			$search_url_next = $search_url."&start=$next";
-			$navi .= "\n".'<td align="right"><a href="'.htmlspecialchars($search_url_next).'">'._MD_NEXT.'</a></td>';
+			$navi .= "\n".'<td align="right"><a href="'.htmlspecialchars($search_url_next, ENT_COMPAT, _CHARSET).'">'._MD_NEXT.'</a></td>';
 		}
 		$navi .= "\n".'</tr></table>';
 		$xoopsTpl->assign('navi', $navi);

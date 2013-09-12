@@ -21,7 +21,7 @@ function search_make_context($text, $words=array(), $l=255, $parts=3, $delimiter
 	$ret = str_replace(array('&lt;','&gt;','&quot;','&#039;','&amp;'),array('<','>','"',"'",'&'), $text);
 
 	// short text
-	if ($strlen($ret) <= $l) return htmlspecialchars($ret);
+	if ($strlen($ret) <= $l) return htmlspecialchars($ret, ENT_QUOTES, _CHARSET);
 
 	if (is_array($words)) {
 		$words = join(' ', $words);
@@ -104,7 +104,7 @@ function search_make_context($text, $words=array(), $l=255, $parts=3, $delimiter
 		$ret .= $delimiter;
 	}
 
-	$ret = htmlspecialchars($ret);
+	$ret = htmlspecialchars($ret, ENT_QUOTES, _CHARSET);
 	$ret = preg_replace('/&amp;(#?[A-Za-z0-9]{2,6}?;)/', '&$1', $ret);
 
 	return $ret;

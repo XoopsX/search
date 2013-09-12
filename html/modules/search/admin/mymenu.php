@@ -104,7 +104,7 @@ if( ! defined( 'XOOPS_ORETEKI' ) ) {
 	// display
 	echo "<div style='text-align:left;width:98%;'>" ;
 	foreach( $adminmenu as $menuitem ) {
-		echo "<div style='float:left;height:1.5em; white-space:nowrap;'><a href='".htmlspecialchars($menuitem['link'],ENT_QUOTES)."' style='background-color:{$menuitem['color']};font:normal normal bold 9pt/12pt;'>".htmlspecialchars($menuitem['title'],ENT_QUOTES)."</a> | </div>\n" ;
+		echo "<div style='float:left;height:1.5em; white-space:nowrap;'><a href='".htmlspecialchars($menuitem['link'],ENT_QUOTES,_CHARSET)."' style='background-color:{$menuitem['color']};font:normal normal bold 9pt/12pt;'>".htmlspecialchars($menuitem['title'],ENT_QUOTES,_CHARSET)."</a> | </div>\n" ;
 	}
 	echo "</div>\n<hr style='clear:left;display:block;' />\n" ;
 
