@@ -42,7 +42,7 @@ if ($xoopsConfigSearch['enable_search'] != 1) {
 $request = array();
 if (! empty($_GET)) $request = $_GET;
 if (! empty($_POST)) $request = array_merge($_POST, $request);
-$myts =& MyTextSanitizer::getInstance();
+(method_exists('MyTextSanitizer', 'sGetInstance') and $myts =& MyTextSanitizer::sGetInstance()) || $myts =& MyTextSanitizer::getInstance();
 $action	= isset($request['action']) 	? $myts->stripSlashesGPC($request['action']) 	: "search";
 $query	= isset($request['query']) 	? $myts->stripSlashesGPC($request['query']) 	: "";
 $andor	= isset($request['andor']) 	? $myts->stripSlashesGPC($request['andor']) 	: "AND";

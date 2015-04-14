@@ -20,7 +20,7 @@ if(!function_exists("file_get_contents")) {
 xoops_cp_header();
 include 'mymenu.php';
 
-$myts =& MyTextSanitizer::getInstance();
+(method_exists('MyTextSanitizer', 'sGetInstance') and $myts =& MyTextSanitizer::sGetInstance()) || $myts =& MyTextSanitizer::getInstance();
 $file = isset($_GET['file'])?
     $myts->stripSlashesGPC($_GET['file']):"/help/help.html";
 display_lang_file($file);
