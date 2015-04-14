@@ -30,6 +30,7 @@ $mydirname = basename( dirname( __FILE__ ) ) ;
 
 $modversion['name'] = _MI_SEARCH_NAME;
 $modversion['version'] = 2.06;
+$modversion['detailed_version'] = "2.06.1" ;
 $modversion['description'] = _MI_SEARCH_DESC;
 $modversion['author'] = "suin(<a href=\"http://suin.asia/\" target=\"_blank\">http://suin.asia/</a>)";
 $modversion['credits'] = "suin";
